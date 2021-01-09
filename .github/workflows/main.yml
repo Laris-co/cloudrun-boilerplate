@@ -20,11 +20,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: nelonoel/branch-name@v1.0.1
-      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      - uses: google-github-actions/setup-gcloud@master
         with:
-          version: 'latest'
-          service_account_key: ${{ env.SA }}
           project_id: ${{ env.PROJECT_ID }}
+          service_account_key: ${{ env.SA }}
       - run: ./build.sh react-app
       - run: gcloud auth configure-docker
       - name: Local Build
